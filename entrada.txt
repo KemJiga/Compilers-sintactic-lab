@@ -1,0 +1,40 @@
+casa;
+
+DROP c;
+
+DROP TABLE pedro;
+DROP TABLE 12pedro;
+
+CREATE TABLE myt1(myt VARCHAR(5));
+CREATE TABLE myt1(myt INTEGER);
+CREATE TABLE myt1(myt DECIMAL(10));
+
+CREATE TABLE (myt VARCHAR(5));
+CREATE TABLE juan(myt VARCHAR);
+CREATE TABLE juan(myt DECIMAL);
+CREATE TABLE 12a(myt DECIMAL(5));
+
+CREATE TABLE Empleado(nombre VARCHAR(20), cedula INTEGER, salario DECIMAL(2));
+DROP TABLE pedro;
+
+a 2;
+INSERT INTO Empleado VALUES('Juan',1045268154, 12aab);
+INSERT Empleado VALUES('Juan',1045268154);
+
+
+
+INSERT INTO Empleado(a1, a2, a3) VALUES('Juan',1045268154, 'aab');
+INSERT INTO Empleado VALUES('Juan',1045268154, 'aab');
+UPDATE Empleado SET nombre='Carlos' WHERE cedula==12.5;
+
+SELECT * FROM juan;
+SELECT papa,nombre FROM juan;
+SELECT * FROM juan WHERE nombre == "pepito";
+SELECT * FROM juan WHERE nombre == "pepito" GROUP BY cate ORDER BY salary ASC;
+SELECT * FROM juan WHERE nombre == "pepito" ORDER BY salary ASC;
+SELECT * FROM juan ORDER BY salary ASC;
+SELECT MAX(salary) FROM juan GROUP BY cate ORDER BY salary ASC;
+
+SELECT MAX() FROM juan GROUP BY cate ORDER BY salary ASC;
+SELECT MAX() FROM juan GROUP ;
+SELECT MAX() FROM juan WHERE x ;
