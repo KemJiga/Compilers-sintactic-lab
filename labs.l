@@ -66,7 +66,6 @@ int lex_writer = 1;
 " * "                                          if(lex_writer == 1){/*printf("asterisco= * ");*/}; error_flag = false; return AST;
 
 (\"[^"]*\")|(\'[^']*\')                        if(lex_writer == 1){/*printf("cadena=%s ", yytext);*/}; error_flag = false; return CADENA;
-
 [ \t\n]                                        ;
 .                                              if(!error_flag){if(!lex_error){lex_error = 1;}if(lex_writer == 1){/*printf("ERROR Léxico!!");*/}; error_flag = true;};
 %%
