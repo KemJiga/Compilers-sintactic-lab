@@ -1,48 +1,36 @@
 %{
     #include <stdio.h>
     #include <string.h>
-    int yylex(), check_lexical_error();
-    int errors = 0;
+
+    int yylex();
+    extern int yylineno;
     void yyerror (char *s);
-    typedef struct yy_buffer_state * YY_BUFFER_STATE;
-    extern FILE *yyout;
-    extern int lex_error, lex_writer;
-    extern YY_BUFFER_STATE yy_scan_string(char * str);
-    extern void yy_delete_buffer(YY_BUFFER_STATE buffer);
-    int errorCounter = 0;
+    void showError (char *s);
+    int integrity = 1;
 %}
 
-%union {char * s;}
-%token <s> NEWLINE CREATE DROP TABLE SELECT WHERE GROUPBY ORDERBY INSERT DELETE UPDATE MAX MIN AVG COUNT INTO VALUES FROM SET ASC DESC INTEGER DECIMAL VARCHAR AND OR ID ENTERO DECIMALNUM MAS MENOS MULT DIV IGUALDAD DIFF MAYORQ MENORQ MAYORIGUAL MENORIGUAL PARABRE PARCIERR COMA PUNTCOMA ASIG AST CADENA
-%start input
-
+%token CREATE DROP TABLE SELECT WHERE GROUPBY ORDERBY INSERT DELETE UPDATE MAX MIN AVG COUNT INTO VALUES FROM SET ASC DESC INTEGER DECIMAL VARCHAR AND OR ID ENTERO DECIMALNUM MAS MENOS MULT DIV IGUALDAD DIFF MAYORQ MENORQ MAYORIGUAL MENORIGUAL PARABRE PARCIERR COMA PUNTCOMA ASIG AST CADENA
+%start exps 
+%define parse.error verbose
 %%
-
-input   : /* empty */
-        | input line
-        ;
-
-line    : NEWLINE
-        | exps NEWLINE
-        ;
 
 exps    : exps exp exps
         | exp
         ;
 
-exp     : create_table
-        | delete_table
-        | insert
-        | delete
-        | update
-        | basic_search
-        | function_search
-        | combine_search
-        | conditional_search
-        | group_search
-        | order_search
-        | full_search
-        | error
+exp     : create_table      
+        | delete_table      
+        | insert            
+        | delete            
+        | update            
+        | basic_search      
+        | function_search   
+        | combine_search    
+        | conditional_search 
+        | group_search      
+        | order_search      
+        | full_search       
+        | error PUNTCOMA    {showError("Error en linea");}
         ;
 
 create_table        : CREATE TABLE ID PARABRE create_params PARCIERR PUNTCOMA ;
@@ -153,56 +141,28 @@ data_type       : INTEGER
 %%
 
 int main(int argc, char **argv){
-    FILE *input = fopen(argv[1], "r");
-    char * line = NULL;
-    size_t len = 0;
-    size_t read;
-    int error_line = 0;
-    int file_integrity = 1;
-    /***yyout = fopen(argv[2], "w");***/
-    while ((read = getline(&line, &len, input)) != -1) {
-        error_line += 1;
-        line[strcspn(line, "\n")] = 0;
-        /*printf("%s\nComponentes Léxicos:\n", line);*/
-        YY_BUFFER_STATE buffer = yy_scan_string(line);
-        
-        if(check_lexical_error()){
-            lex_error = 0;
-            printf("Error en linea %d\n", error_line);
-            file_integrity = 0;
-        }else{
-            lex_writer = 0;
-            errorCounter = 0;
-            yy_delete_buffer(buffer);
-            YY_BUFFER_STATE buffer = yy_scan_string(line);
-            yyparse();
-            if(errorCounter == 0){
-                /*printf("Incorrecto\n\n");*/
-            }else{
-                if(file_integrity == 1){
-                    printf("Incorrecto\n\n");
-                };
-                printf("Error en linea %d\n", error_line);
-                file_integrity = 0;
-            };
-            yy_delete_buffer(buffer);
-        };
-    };
-    if(file_integrity == 1){
+    extern FILE *yyin, *yyout;
+
+    yyin = fopen(argv[1], "r");
+    yyout = fopen(argv[3], "w");
+    yyparse();
+
+    if(integrity == 1){
         printf("Correcto\n");
     };
-    return 0;
-}
 
-int check_lexical_error(){
-    lex_writer = 1;
-    int token = yylex();
-    while(token){
-        token = yylex();
-    };
-    return lex_error;
+    return 0;
+};
+
+void showError (char *s) {
+    printf("%s %d\n", s, yylineno);
 }
 
 void yyerror (char *s) {
-    ++errorCounter;
+    if(integrity == 1){
+        printf("Incorrecto\n\n");
+        integrity = 0;
+    };
+    /*printf("%s \n", s);*/
+    /*printf("Error en linea %d\n", yylineno);*/
 } 
