@@ -10,6 +10,7 @@ void yyerror (char *s);
 %option yylineno
 
 %%
+
 "CREATE"                                       return CREATE;
 "DROP"                                         return DROP;
 "Table"|"TABLE"|"table"                        return TABLE;
@@ -57,7 +58,8 @@ void yyerror (char *s);
 (\"[^"]*\")|(\'[^']*\')                        return CADENA;
 \n                                             ;
 [ \t]                                          ;
-.                                              ;
+.                                              return LEXERR;
+
 %%
 
 int yywrap(void){
