@@ -9,12 +9,13 @@
     int integrity = 1;
 %}
 
-%token CREATE DROP TABLE SELECT WHERE GROUPBY ORDERBY INSERT DELETE UPDATE MAX MIN AVG COUNT INTO VALUES FROM SET ASC DESC INTEGER DECIMAL VARCHAR AND OR ID ENTERO DECIMALNUM MAS MENOS MULT DIV IGUALDAD DIFF MAYORQ MENORQ MAYORIGUAL MENORIGUAL PARABRE PARCIERR COMA PUNTCOMA ASIG AST CADENA
+%token END_OF_FILE LEXERR CREATE DROP TABLE SELECT WHERE GROUPBY ORDERBY INSERT DELETE UPDATE MAX MIN AVG COUNT INTO VALUES FROM SET ASC DESC INTEGER DECIMAL VARCHAR AND OR ID ENTERO DECIMALNUM MAS MENOS MULT DIV IGUALDAD DIFF MAYORQ MENORQ MAYORIGUAL MENORIGUAL PARABRE PARCIERR COMA PUNTCOMA ASIG AST CADENA
 %start exps 
 %define parse.error verbose
+
 %%
 
-exps    : exps exp exps
+exps    : exps exp
         | exp
         ;
 
@@ -90,7 +91,6 @@ mult_ids_par    : ID PARABRE mult_ids PARCIERR
                 ;
 
 insert_params   : insert_params COMA insert_params
-                | ID 
                 | ENTERO
                 | DECIMALNUM
                 | CADENA
@@ -138,6 +138,7 @@ data_type       : INTEGER
                 | DECIMAL
                 | VARCHAR
                 ;
+
 %%
 
 int main(int argc, char **argv){
