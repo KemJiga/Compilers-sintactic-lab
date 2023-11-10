@@ -1,0 +1,21 @@
+SELECT * FROM juan;
+SELECT papa,nombre FROM juan;
+SELECT * FROM juan WHERE nombre == "pepito";
+SELECT * FROM juan WHERE nombre == "pepito" GROUP BY cate ORDER BY salary ASC;
+SELECT * FROM juan WHERE nombre == "pepito" AND x==2 ORDER BY salary ASC;
+SELECT * FROM juan ORDER BY salary ASC;
+SELECT MAX(salary) FROM juan GROUP BY cate ORDER BY salary ASC;
+SELECT COUNT(salary) FROM juan GROUP BY cate;
+
+
+SELECT MAX() FROM juan GROUP BY cate ORDER BY salary ASC;
+SELECT MAX(a),juan,* FROM juan;
+SELECT ,* FROM juan;
+SELECT * FROM juan WHERE X=1;
+SELECT * FROM juan GROUP BY cate WHERE X==1;
+SELECT * FROM juan ORDER BY k DESC WHERE X==1;
+SELECT * FROM juan ORDER BY k DESC GROUP BY cate;
+SELECT * FROM juan ORDER BY k DESC WHERE X==1;
+SELECT * FROM juan O;
+SELECT 2,3,4 FROM juan;
+* FROM juan;

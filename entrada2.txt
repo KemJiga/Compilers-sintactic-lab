@@ -1,40 +1,42 @@
-casa;
-
-DROP c;
-
-DROP TABLE pedro;
-DROP TABLE 12pedro;
-
-CREATE TABLE myt1(myt VARCHAR(5));
-CREATE TABLE myt1(myt INTEGER);
-CREATE TABLE myt1(myt DECIMAL(10));
-
-CREATE TABLE (myt VARCHAR(5));
-CREATE TABLE juan(myt VARCHAR);
-CREATE TABLE juan(myt DECIMAL);
-CREATE TABLE 12a(myt DECIMAL(5));
-
-CREATE TABLE Empleado(nombre VARCHAR(20), cedula INTEGER, salario DECIMAL(2));
-DROP TABLE pedro;
-
-a 2;
-INSERT INTO Empleado VALUES('Juan',1045268154, 12aab);
-INSERT Empleado VALUES('Juan',1045268154);
+CREATE TABLE Employees (ID INTEGER, Name VARCHAR(20), Age INTEGER, Salary DECIMAL(10));
+CREATE TABLE Departments (id INTEGER, Name VARCHAR(20));
+CREATE TABLE j (a INTEGER, b VARCHAR(20));
+INSERT INTO Employees (ID, Name, Age, Salary) VALUES (1, 'John Doe', 30, 50000.00);
+INSERT INTO Employees (ID, Name, Age, Salary) VALUES (2, 'Jane Doe', 28, 60000.00);
+INSERT INTO Employees VALUES (2, 'Jane Doe', 28, 60000.00);
+INSERT INTO e2 VALUES (2, 'Pepito', 28, 60000.00);
+INSERT INTO Personas VALUES(43578,'Miguel','Arteta',4,145.6);
+INSERT INTO Personax VALUES('Alberto');
+INSERT INTO Personax VALUES(43579);
+UPDATE Employees SET Salary = 70000.30 WHERE ID == 2;
+UPDATE Employees SET Salary = 50000.40 WHERE ID == 2;
+UPDATE Employees SET Salary = 50000.40 WHERE ID == 'casa' OR ID == 2.5;
+UPDATE Employees SET Salary = 50000.40 WHERE ID == 2 AND juan == 10 OR petro=='lca';
+DELETE FROM Employees WHERE ID == 1;
+DELETE FROM     Employees    WHERE ID == 1;
+DROP TABLE Departments;
+DROP TABLE Employees;
 
 
 
-INSERT INTO Empleado(a1, a2, a3) VALUES('Juan',1045268154, 'aab');
-INSERT INTO Empleado VALUES('Juan',1045268154, 'aab');
-UPDATE Empleado SET nombre='Carlos' WHERE cedula==12.5;
-
-SELECT * FROM juan;
-SELECT papa,nombre FROM juan;
-SELECT * FROM juan WHERE nombre == "pepito";
-SELECT * FROM juan WHERE nombre == "pepito" GROUP BY cate ORDER BY salary ASC;
-SELECT * FROM juan WHERE nombre == "pepito" ORDER BY salary ASC;
-SELECT * FROM juan ORDER BY salary ASC;
-SELECT MAX(salary) FROM juan GROUP BY cate ORDER BY salary ASC;
-
-SELECT MAX() FROM juan GROUP BY cate ORDER BY salary ASC;
-SELECT MAX() FROM juan GROUP ;
-SELECT MAX() FROM juan WHERE x ;
+CREATE TABLE  (ID INTEGER, Name VARCHAR(20), Age INTEGER, Salary DECIMAL(10));
+CREATE TABLE  INTEGER, Name VARCHAR(20));
+CREATE TABLE j (a, b VARCHAR(20));
+INSERT Employees VALUES (1, 'John Doe', -, KIA);
+INSERT INTO WHERE ('CASA') VALUES (2, 'Jane Doe', 28, 60000.00);
+INSERT INTO Employees VALUES (a2, 'Jane Doe', a2a8, 60000.00);
+INSERT INTO e2 VALUES (2, 'Pepito', 28, 60000.00) ?;
+INSERT ? .;
+INSERT INTO 12Personax VALUES(4'Alberto');
+INSERT INTO Personax (43579);
+UPDATE SET Salary = 70000.30 WHERE ID = 2;
+UPDATE ujan SET Salary = 70000.30;
+UPDATE Employees MAX(SET) Salary = 50000.40 WHERE ID 2;
+UPDATE Employees FROM a SET Salary = 50000.40 WHERE ID = 'casa' OR ID = 2.5;
+Employees SET Salary = 50000.40 WHERE ID == 2 AND juan == 10 OR petro='lca';
+FROM Employees ID = 1;
+DELETE FROM Employees aWHERE ID = 1;
+DELETE FROM Employees;
+DROP TABLE 5D5epartments;
+DROP . TABLE 6Employees;
+DROP TABLE;
